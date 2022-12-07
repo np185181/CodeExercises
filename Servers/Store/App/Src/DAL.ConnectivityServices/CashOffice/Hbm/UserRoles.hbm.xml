@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="Retalix.StoreServices.Model.UserRoles"
+                   assembly="Retalix.StoreServices.Model">
+
+  <class name="UserRolesDto" entity-name="UserRoles" table="UserRoles" lazy="false">
+    <id name="UserRoleId" column="UserRoleId">
+      <generator class="identity" />
+    </id>
+    <property name="UserRoleName" column="UserRoleName"/>
+    <property name="UserRoleType" column="UserRoleType"/>
+    <property name="UserRoleDescription" column="UserRoleDescription"/>
+    <property name="IsUserRoleActive" column="IsUserRoleActive"/>
+  </class>
+</hibernate-mapping>
