@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://retalix.com/R10/services"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://retalix.com/R10/services"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:complexType name="UserRolesType">
+    <xs:sequence>
+      <xs:element name="UserRoleID" type="xs:int" minOccurs="0"/>
+      <xs:element name="UserRoleName" type="xs:string" minOccurs="0"/>
+      <xs:element name="UserRoleType" type="xs:string" minOccurs="0"/>
+      <xs:element name="UserRoleDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="IsUserRoleActive" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
