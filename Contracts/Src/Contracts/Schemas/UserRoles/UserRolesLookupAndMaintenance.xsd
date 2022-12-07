@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UserRolesLookup"
+ xmlns="http://retalix.com/R10/services" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://retalix.com/R10/services" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+  <xs:include schemaLocation="../Common/RetalixCommonHeader.xsd"/>
+  <xs:include schemaLocation="../Common/MaintenanceServiceAbstract.xsd"/>
+  <xs:include schemaLocation="../Common/ActionTypeCodes.xsd"/>
+  <xs:include schemaLocation="UserRolesType.xsd"/>
+  <!--LookUp Request-->
+  <xs:element name="UserRolesLookupServiceRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header" type="RetalixCommonHeaderType"/>
+        <xs:element name="Request">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UserRoleId" type="xs:int"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="MajorVersion" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <!--LookUp Reponse-->
+  <xs:element name="UserRolesLookupServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header" type="RetalixCommonHeaderType"/>
+        <xs:element name="Response">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UserRolesRow" type="UserRolesType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="MajorVersion" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="UserRolesMaintenanceRequest">
+    <xs:annotation>
+      <xs:documentation>Maintenance service for User Roles Type. </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MaintenanceServiceRequestAbstract">
+        <xs:sequence>
+          <xs:element name="UserRoles" type="UserRolesType">
+            <xs:annotation>
+              <xs:documentation>The Application Configuration Type for maintenance (Add / Update / Delete).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Action" type="ActionTypeCodes">
+            <xs:annotation>
+              <xs:documentation>The action to perform on the provided configuration (Add, Update, Delete)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--User Roles Maintanance Request-->
+  <xs:element name="UserRolesMaintenanceRequest" type="UserRolesMaintenanceRequest">
+    <xs:annotation>
+      <xs:documentation> User Roles Maintenance Service Request</xs:documentation>
+      <xs:appinfo>
+        <classification Service="true"/>
+        <classification ServiceType="Request"/>
+        <classification ServicePattern="Maintenance"/>
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UserRolesMaintenanceResponse">
+    <xs:annotation>
+      <xs:documentation>Maintenance service for UserRoles Types.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ServiceResponseAbstract"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--User Roles Maintanance Reponse-->
+  <xs:element name="UserRolesMaintenanceResponse" type="UserRolesMaintenanceResponse">
+    <xs:annotation>
+      <xs:documentation> User Roles Maintenance Service Response</xs:documentation>
+      <xs:appinfo>
+        <classification Service="true"/>
+        <classification ServiceType="Response"/>
+        <classification ServicePattern="Maintenance"/>
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>
